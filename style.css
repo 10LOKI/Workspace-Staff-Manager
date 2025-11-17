@@ -72,7 +72,7 @@ h2, h3, p {
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
     font-weight: 500;
-    background-color: var(--primary-color);
+    background-color: green;
     color: var(--text-light);
     border: none;
     border-radius: 8px;
@@ -98,7 +98,7 @@ h2, h3, p {
 }
 
 .etageScheme > div {
-    background-color: transparent;
+    background-color: color-mix(in srgb, var(--background-color), transparent 50%);
     border: 1px solid #eee;
     border-radius: 10px;
     padding: 20px;
@@ -107,6 +107,7 @@ h2, h3, p {
     align-items: center;
     justify-content: center;
     min-height: 100px;
+    backdrop-filter: blur(2px);
 }
 .etageScheme > div p {
     font-weight: 600;
@@ -120,10 +121,40 @@ h2, h3, p {
 }
 .salleConf 
 {
-    padding-right: 200px;
+    height: 180px;
+    width: 410px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.recepPlace
+{
+    margin-top: 15px;
+    height: 185px;
+    margin-left: 200px;
+    width: 220px;
+}
+.salleServeurs
+{
+    height: 180px;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+.salleSecurite
+{
+    margin-left: 15px;
+    margin-top: -95px;
+}
+.sallePersonnel
+{
+    margin-top: 140px;
+    margin-left: 200px;
+}
+.salleArchive
+{
+    margin-top: 140px;
 }
 .modal {
-    display: none !important;
+    display: flex !important ;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -134,7 +165,7 @@ h2, h3, p {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     z-index: 101;
     width: 400px;
-    display: flex; /* Use flex for inputs */
+    display: flex;
     flex-direction: column;
     gap: 15px;
 }
@@ -146,7 +177,7 @@ h2, h3, p {
     border-radius: 6px;
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
-    box-sizing: border-box; /* Include padding in width */
+    box-sizing: border-box; 
 }
 
 .modal input[type="text"]:focus {
@@ -154,4 +185,27 @@ h2, h3, p {
     border-color: var(--primary-color);
     box-shadow: 0 0 5px rgba(125, 60, 255, 0.3);
 }
+#submitBtn 
+{
+    background-color: var(--primary-color);
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+#closeModal
+{
+    background-color: var(--accent-color);
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+    cursor: pointer;
 }
