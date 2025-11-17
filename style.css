@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+:root {
+    --primary-color: #7d3cff;
+    --secondary-color: #f2d53c;
+    --accent-color: #c80e13;
+    --background-color: #fceed1;
+    --text-dark: #222;
+    --text-light: #fefefe;
+    --nav-height: 70px;
+}
+
+body {
+    background-color: #f9f9f9; 
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: var(--text-dark);
+}
+
+h2, h3, p {
+    margin: 0;
+}
+
+.mainContainer {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: var(--nav-height) 1fr auto; 
+    grid-template-areas: "header header"
+                         "list main"
+                         "footer footer";
+    gap: 20px;
+    padding: 0 20px 20px 20px;
+    box-sizing: border-box;
+}
+
+.navBar {
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    height: 70px;
+    margin: 0 -20px;
+    padding: 0 40px;
+    z-index: 100;
+}
+
+.navBar .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.navBar .logo h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.staffList {
+    background-color: var(--background-color);
+    grid-area: list;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#addEmployee {
+    width: 100%;
+    padding: 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addEmployee:hover {
+    background-color: #6a28e0;
+}
+
+.staffList .list {
+    margin-top: 20px;
+}
+
+.etageScheme {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-image: url(images/backgroundWorkspace.jpg);
+    background-size: 100%;
+    gap: 20px;
+}
+
+.etageScheme > div {
+    background-color: transparent;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+}
+.etageScheme > div p {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+.salleConf, .recepPlace, .salleServeurs, .salleSecurite, .sallePersonnel, .salleArchive, .salleArchive
+{
+    display: flex;
+    flex-direction: column;
+}
+.salleConf 
+{
+    padding-right: 200px;
+}
+.modal {
+    display: none !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 101;
+    width: 400px;
+    display: flex; /* Use flex for inputs */
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.modal input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(125, 60, 255, 0.3);
+}
+}
