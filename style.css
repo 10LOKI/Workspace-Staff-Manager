@@ -83,129 +83,317 @@ h2, h3, p {
 #addEmployee:hover {
     background-color: #6a28e0;
 }
-
+/* l'affichage des cartes */
 .staffList .list {
     margin-top: 20px;
 }
+.worker_card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.worker_card:hover {
+    transform: translateY(-5px);
+}
+.delete_btn {
+    position: absolute;
+    top: 10px;   /* Distance du haut */
+    right: 10px; /* Distance de la droite */
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%; /* Pour faire un cercle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e74c3c; /* Couleur rouge */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Effet au survol */
+.delete_btn:hover {
+    background-color: #e74c3c;
+    color: white;
+    transform: scale(1.1); /* L'icône grandit un peu */
+}
+.user_img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #4CAF50;
+}
+
+.role {
+    color: #666;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
 
 .etageScheme {
     grid-area: main;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-image: url(images/backgroundWorkspace.jpg);
-    background-size: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 20px;
     gap: 20px;
 }
 
 .etageScheme > div {
-    background-color: color-mix(in srgb, var(--background-color), transparent 50%);
-    border: 1px solid #eee;
-    border-radius: 10px;
+    /* Design de la carte */
+    background-color: white;
+    border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Gestion de l'image de fond */
+    background-size: cover;       /* L'image couvre tout */
+    background-position: center;  /* L'image est centrée */
+    background-repeat: no-repeat;
+    
+    /* Pour que le texte soit lisible sur l'image */
+    position: relative;
+    overflow: hidden;
+    min-height: 200px; /* Hauteur minimale pour chaque salle */
+    
+    /* Flexbox pour centrer le contenu */
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    min-height: 100px;
-    backdrop-filter: blur(2px);
+    align-items: center;
+    color: white; /* Texte en blanc pour le contraste */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Ombre sur le texte */
 }
-.etageScheme > div p {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--text-dark);
+
+/* Optionnel : Ajouter un filtre sombre pour mieux voir le texte */
+.etageScheme > div::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Calque noir transparent */
+    z-index: 1;
+}
+
+/* Pour que le contenu (texte/select) soit au-dessus du filtre sombre */
+.etageScheme > div p, 
+.etageScheme > div label, 
+.etageScheme > div select {
+    position: relative;
+    z-index: 2;
 }
 .salleConf, .recepPlace, .salleServeurs, .salleSecurite, .sallePersonnel, .salleArchive, .salleArchive
 {
     display: flex;
     flex-direction: column;
 }
-.salleConf 
-{
-    height: 180px;
-    width: 410px;
-    margin-top: 10px;
-    margin-left: 10px;
+/* Supprime les anciens margin/width/height fixes ! */
+
+.salleConf {
+    background-image: url('images/salleReunion.jpg');
 }
-.recepPlace
-{
-    margin-top: 15px;
-    height: 185px;
-    margin-left: 200px;
-    width: 220px;
+
+.recepPlace {
+    background-image: url('images/reception.jpg');
 }
-.salleServeurs
-{
-    height: 180px;
-    margin-top: 15px;
-    margin-right: 15px;
+
+.salleServeurs {
+    background-image: url('images/server_room.jpg');
 }
-.salleSecurite
-{
-    margin-left: 15px;
-    margin-top: -95px;
+
+.salleSecurite {
+    background-image: url('images/securiteSalle.jpg');
 }
-.sallePersonnel
-{
-    margin-top: 140px;
-    margin-left: 200px;
+
+.sallePersonnel {
+    background-image: url('images/staffRoom.jpg');
 }
-.salleArchive
+
+.salleArchive {
+    background-image: url('images/archiveSalle.jpg');
+}
+.hidden
 {
-    margin-top: 140px;
+    display: none !important;
 }
 .modal {
-    display: flex !important ;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     z-index: 101;
-    width: 400px;
+    width: 450px;
+    max-height: 90vh;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-}
-
-.modal input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
     font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    box-sizing: border-box; 
 }
 
-.modal input[type="text"]:focus {
+.modal-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #007bff; 
+}
+
+.close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+}
+
+.modal-body {
+    padding: 25px;
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="date"],
+.modal select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.modal input:focus, .modal select:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(125, 60, 255, 0.3);
+    border-color: #007bff;
+    background-color: #f9fcff;
 }
-#submitBtn 
-{
-    background-color: var(--primary-color);
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    box-sizing: border-box;
+.experiences-container {
+    background-color: #4081c2;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.row-inputs {
+    display: flex;
+    gap: 10px;
+}
+.row-inputs .form-group {
+    flex: 1;
+}
+
+.modal-footer {
+    padding: 15px 25px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: #fcfcfc;
+    border-radius: 0 0 8px 8px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
 }
-#closeModal
-{
+#experienceBtn {
+    background-color: var(--text-dark);
+    color: #fff;
+    width: auto;
+}
+
+#submitBtn {
+    background-color: green;
+    color: white;
+}
+#closeModal {
     background-color: var(--accent-color);
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    box-sizing: border-box;
-    cursor: pointer;
+    color: white;
+}
+
+@media (max-width: 1023px) {
+    .mainContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas: 
+            "header"
+            "list"
+            "main";
+        padding: 10px;
+        gap: 15px;
+    }
+    .navBar {
+        margin: 0 -10px;
+        padding: 0 20px;
+    }
+    .etageScheme {
+        background-image: none;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+    }
+    .salleConf, 
+    .recepPlace, 
+    .salleServeurs, 
+    .salleSecurite, 
+    .sallePersonnel, 
+    .salleArchive {
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 20px;
+        box-sizing: border-box;
+        align-items: flex-start; 
+    }
+}
+@media screen and (max-width: 767px) {
+    .navBar .logo h2 {
+        font-size: 1.2rem;
+    }
+
+    .modal {
+        width: 90%;
+        max-height: 85vh;
+    }
+    .row-inputs {
+        flex-direction: column;
+    }
 }
