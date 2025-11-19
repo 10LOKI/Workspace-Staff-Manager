@@ -102,22 +102,21 @@ h2, h3, p {
 }
 .delete_btn {
     position: absolute;
-    top: 10px;   /* Distance du haut */
-    right: 10px; /* Distance de la droite */
+    top: 10px;
+    right: 10px;
     background: white;
     border: none;
     cursor: pointer;
     padding: 5px;
-    border-radius: 50%; /* Pour faire un cercle */
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #e74c3c; /* Couleur rouge */
+    color: #e74c3c;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Effet au survol */
 .delete_btn:hover {
     background-color: #e74c3c;
     color: white;
@@ -149,28 +148,23 @@ h2, h3, p {
 }
 
 .etageScheme > div {
-    /* Design de la carte */
     background-color: white;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    
-    /* Gestion de l'image de fond */
-    background-size: cover;       /* L'image couvre tout */
-    background-position: center;  /* L'image est centrée */
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
     
-    /* Pour que le texte soit lisible sur l'image */
     position: relative;
     overflow: hidden;
-    min-height: 200px; /* Hauteur minimale pour chaque salle */
+    min-height: 250px;
     
-    /* Flexbox pour centrer le contenu */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white; /* Texte en blanc pour le contraste */
+    color: white;
     text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Ombre sur le texte */
 }
 
@@ -206,7 +200,7 @@ h2, h3, p {
 }
 
 .salleServeurs {
-    background-image: url('images/server_room.jpg');
+    background-image: url('images/serverSalle.jpg');
 }
 
 .salleSecurite {
@@ -346,6 +340,61 @@ button {
     background-color: var(--accent-color);
     color: white;
 }
+/* Container li fih les cartes */
+.occupied-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Design dyal la carte sghira */
+.mini-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    width: 140px; /* 3ard sghir */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; 
+    z-index: 5;
+}
+
+.mini-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+    border: 2px solid #4CAF50;
+}
+
+.mini-card h4 {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.mini-card-btns {
+    display: flex;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.btn-info, .btn-remove {
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+}
+
+.btn-info { background-color: #2196F3; } /* Zre9 */
+.btn-remove { background-color: #f44336; } /* 7mer */
+
 
 @media (max-width: 1023px) {
     .mainContainer {

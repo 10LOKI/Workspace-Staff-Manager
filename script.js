@@ -245,17 +245,23 @@ function afficherSalle() {
     workers.forEach((worker, index) => {
         if (worker.zone !== null) {
             
-             const roomDiv = document.querySelector(`.etageScheme div[data-room="${worker.zone}"]`);
+            const roomDiv = document.querySelector(`.etageScheme div[data-room="${worker.zone}"]`);
             if (roomDiv) {
                 const listContainer = roomDiv.querySelector('.occupied-list');
                 listContainer.innerHTML += `
-                    <div class="mini-card" style="border:1px solid #ccc; margin-top:5px; padding:5px; display:flex; align-items:center; background:white; border-radius:5px;">
-                        <img src="${worker.photo}" style="width:30px; height:30px; border-radius:50%; margin-right:10px; object-fit:cover;">
-                        <div>
-                            <strong style="font-size:12px;">${worker.nom}</strong>
-                            <p style="font-size:10px; margin:0; color:gray;">${worker.role}</p>
+                    <div class="mini-card">
+                        <img src="${worker.photo}" alt="${worker.nom}">
+                        <h4>${worker.nom}</h4>
+                        
+                        <div class="mini-card-btns">
+                            <button class="btn-info" onclick="voirDescription(${index})">
+                                Afficher infos
+                            </button>
+                            
+                            <button class="btn-remove" onclick="retirerDeSalle(${index})">
+                            Retourner a la liste 
+                            </button>
                         </div>
-                         <span onclick="retirerDeSalle(${index})" style="margin-left:auto; cursor:pointer; color:red; font-weight:bold;">&times;</span>
                     </div>
                 `;
             }
@@ -267,4 +273,19 @@ function retirerDeSalle(index) {
     afficherEmployee();
     affichOptions();
     afficherSalle();
+}
+
+function voirDescription(index)
+{
+    const w = workers[index];
+
+    let message = `
+    Nom: ${w.nom}
+    Rôle: ${w.role}
+    Email: ${w.email}
+    Tel: ${w.telephone}
+    Société précedente: ${w.experiences[0] ? w.experiences[0].societe : 'Aucune'}
+    `;
+    
+    alert(message);
 }
