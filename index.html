@@ -1,11 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Workspace Staff Manager</title>
+    <link rel="icon" href="images/logo1.png" type="image/png">
 </head>
+
 <body>
-    
+    <div class="mainContainer">
+        <nav class="navBar">
+            <div class="logo">
+                <h2>Workspace 4U</h2>
+            </div>
+        </nav>
+
+        <div class="staffList">
+            <button id="addEmployee">Ajouter un employer</button>
+            <div class="list"></div>
+        </div>
+
+        <div class="modal hidden">
+            <div class="modal-header">
+                <h2>Ajoute employee</h2>
+                <span id="closeIcon" class="close">&times;</span>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nom:</label>
+                    <input id="nomInput" type="text" placeholder="Entre nom">
+                </div>
+
+                <div class="form-group">
+                    <label>Role:</label>
+                    <select id="selected">
+                        <option>Receptioniste</option>
+                        <option>agent de securite</option>
+                        <option>directeur</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Photo (URL):</label>
+                    <input type="text" placeholder="https://example.com/photo.jpg" id="photoInput">
+                </div>
+                <div class="form-group">
+                    <label>Experiences:</label>
+                    <div class="experiences-container">
+                        <div class="experience-item">
+                            <div class="form-group">
+                                <label>Societe:</label>
+                                <input class="exp-societe" type="text" placeholder="Enter company">
+                            </div>
+                            <div class="form-group">
+                                <label>Role:</label>
+                                <input class="exp-role" type="text" placeholder="Enter role">
+                            </div>
+                            <div class="row-inputs">
+                                <div class="form-group">
+                                    <label>Du:</label>
+                                    <input class="exp-du" type="date">
+                                </div>
+                                <div class="form-group">
+                                    <label>A:</label>
+                                    <input class="exp-a" type="date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="experienceBtn">Ajouter experience</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email"  id="emailInput" placeholder="email@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Telephone:</label>
+                    <input id="telephoneInput" type="text" placeholder="+212 655112255">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="submitBtn">Ajouter</button>
+                <button id="closeModal">Annuler</button>
+            </div>
+        </div>
+
+        <div class="etageScheme">
+            <div class="salleConf">
+                <p>Salle de conférence</p>
+                <label for="myDropdown">choisir un employant</label>
+                <select class="room-select" id="myDropdown" name="myOption">
+                    <option value="option1" selected>Selectionner</option>
+                </select>
+            </div>
+            <div class="recepPlace">
+                <p>Réception</p>
+                <label for="myDropdown">choisir un employant</label>
+                <select class="room-select" id="myDropdown" name="myOption">
+                    <option value="option1" selected>Selectionner</option>
+                </select>
+            </div>
+            <div class="salleServeurs">
+                <p>Salle des serveurs</p>
+                <label for="myDropdown">choisir un employant</label>
+                <select class="room-select" id="myDropdown" name="myOption">
+                    <option value="option1" selected>Selectionner</option>
+                </select>
+            </div>
+            <div class="salleSecurite">
+                <p>Salle de sécurité</p>
+                <label for="myDropdown">choisir un employant</label>
+                <select class="room-select" id="myDropdown" name="myOption">
+                    <option value="option1" selected>Selectionner</option>
+                </select>
+            </div>
+            <div class="sallePersonnel">
+                <p>Salle du personnel</p>
+                <label for="myDropdown">choisir un employant</label>
+                <select class="room-select" id="myDropdown" name="myOption">
+                    <option value="option1" selected>Selectionner</option>
+                </select>
+            </div>
+            <div class="salleArchive">
+                <p>Salle d’archives</p>
+                <label for="myDropdown">choisir un employant</label>
+                <select class="room-select" id="myDropdown" name="myOption">
+                    <option value="option1" selected>Selectionner</option>
+                </select>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
