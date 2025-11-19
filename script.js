@@ -87,6 +87,7 @@ let workers = [
 document.addEventListener("DOMContentLoaded", () =>
 {
     afficherEmployee(workers);
+    affichOptions(workers);
 })
 
 
@@ -172,6 +173,7 @@ function afficherEmployee(){
     for(let i =0; i <  workers.length ; i++)
     {
         let worker = workers[i];
+        if(worker.zone ===null){
         workList.innerHTML += `
         <div class="worker_card">
         <button class="delete_btn">
@@ -191,6 +193,7 @@ function afficherEmployee(){
         </div>
         `;
     }
+}
 }
 
 function supprEmployee()
@@ -215,7 +218,10 @@ function affichOptions()
             }
         })
         select.onchange = function() {
+            const selectedIndex = this.value;
+            const roomName = this.getAttribute('data-room');
             deplacerEmployee(this.value, this.dataset.room);
+            this.value = "";
         };
     })
 }
@@ -223,11 +229,42 @@ function affichOptions()
 
 function deplacerEmployee(index,roomName)
 {
-    if(index === "")
-        return;
+    if(index === "") return;
+
+    workers[index].zone = roomName;
+
+    afficherEmployee();
+    affichOptions();
+    afficherSalle();
+    // alert(workers[index].nom + "est deplacé dans" + roomName);
 }
 
-function afficherSalle()
-{
-    
+function afficherSalle() {
+    document.querySelectorAll('.occupied-list').forEach(div => div.innerHTML = '');
+
+    workers.forEach((worker, index) => {
+        if (worker.zone !== null) {
+            
+             const roomDiv = document.querySelector(`.etageScheme div[data-room="${worker.zone}"]`);
+            if (roomDiv) {
+                const listContainer = roomDiv.querySelector('.occupied-list');
+                listContainer.innerHTML += `
+                    <div class="mini-card" style="border:1px solid #ccc; margin-top:5px; padding:5px; display:flex; align-items:center; background:white; border-radius:5px;">
+                        <img src="${worker.photo}" style="width:30px; height:30px; border-radius:50%; margin-right:10px; object-fit:cover;">
+                        <div>
+                            <strong style="font-size:12px;">${worker.nom}</strong>
+                            <p style="font-size:10px; margin:0; color:gray;">${worker.role}</p>
+                        </div>
+                         <span onclick="retirerDeSalle(${index})" style="margin-left:auto; cursor:pointer; color:red; font-weight:bold;">&times;</span>
+                    </div>
+                `;
+            }
+        }
+    });
+}
+function retirerDeSalle(index) {
+    workers[index].zone = null;
+    afficherEmployee();
+    affichOptions();
+    afficherSalle();
 }
