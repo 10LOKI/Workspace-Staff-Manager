@@ -83,6 +83,14 @@ let workers = [
     }
 ];
 
+// let restrictions = {
+//     salleReunion = [],
+//     reception = [],
+//     salleServeurs = [],
+//     salleSecurite = [],
+//     sallePersonnel = [],
+//     salleArchive =[]
+// };
 // l'appel des fonctions 
 document.addEventListener("DOMContentLoaded", () =>
 {
@@ -114,6 +122,12 @@ closeModal.addEventListener('click', () =>
 submitBtn.addEventListener('click', ajoutCarte);
 function ajoutCarte()
 {
+    if(workers.length >= 30)
+    {
+        alert("vous pouvez pas ajouter encore un employee");
+        document.querySelector('.modal').classList.add("hidden");
+        return;
+    }
     let nom = document.getElementById("nomInput").value;
     let role = document.getElementById("selected").value;
     let photo = document.getElementById("photoInput").value;
@@ -121,7 +135,6 @@ function ajoutCarte()
     let telephone = document.getElementById("telephoneInput").value;
     let experienceArray = [];
     let experienceItems = document.querySelectorAll('.experience-item');
-    
     experienceItems.forEach(function(item)
 {
     let societe = item.querySelector('.exp-societe').value;
@@ -160,7 +173,6 @@ let allInputs = document.querySelectorAll('.modal input');
 allInputs.forEach(input => {
     input.value = "";
 });
-
 document.querySelector('.modal').classList.add("hidden");
 }
 
@@ -198,7 +210,7 @@ function afficherEmployee(){
 
 function supprEmployee()
 {
-
+//khassni mazal nerje3 liha nekhdem 3la suppresion
 }
 
 function affichOptions()
@@ -236,7 +248,7 @@ function deplacerEmployee(index,roomName)
     afficherEmployee();
     affichOptions();
     afficherSalle();
-    // alert(workers[index].nom + "est deplacé dans" + roomName);
+    alert(workers[index].nom + " est deplacé dans " + roomName);
 }
 
 function afficherSalle() {
@@ -263,23 +275,24 @@ function afficherSalle() {
         }
     });
 }
+// retirement men dik zone li fiha 
 function retirerDeSalle(index) {
     workers[index].zone = null;
     afficherEmployee();
     affichOptions();
     afficherSalle();
 }
-
+// la fonction qui affiche l modal dial description d'un employee
 function voirDescription(index)
 {
     const Emp = workers[index];
-
     let message = `
     Nom: ${Emp.nom}
     Rôle: ${Emp.role}
     Email: ${Emp.email}
     Tel: ${Emp.telephone}
     Société précedente: ${Emp.experiences[0] ? Emp.experiences[0].societe : 'Aucune'}
+    localisation actuelle: ${Emp.zone}
     `;
     let modalDesc = document.getElementById('workerModal');
     let detailsContainer = document.getElementById('workerDetails');
@@ -290,4 +303,54 @@ function voirDescription(index)
     {
         modalDesc.style.display = "none";
     }
+}
+
+// Validation Regex
+const nomInput = document.getElementById("nomInput");
+const emailInput = document.getElementById("emailInput");
+const telephoneInput = document.getElementById("telephoneInput");
+
+const nomError = document.getElementById("nomError");
+const emailError = document.getElementById("emailError");
+const telephoneError = document.getElementById("telephoneError");
+
+const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRegex = /^(?:\+212|0)([ \-]?\d){9}$/;
+
+nomInput.addEventListener("input", () => {
+    if (!nameRegex.test(nomInput.value)) {
+        nomError.textContent = "Nom invalide (min 2 lettres).";
+        nomInput.style.borderColor = "red";
+    } else {
+        nomError.textContent = "";
+        nomInput.style.borderColor = "green";
+    }
+});
+
+// Validation Email
+emailInput.addEventListener("input", () => {
+    if (!emailRegex.test(emailInput.value)) {
+        emailError.textContent = "Format email invalide.";
+        emailInput.style.borderColor = "red";
+    } else {
+        emailError.textContent = "";
+        emailInput.style.borderColor = "green";
+    }
+});
+
+// Validation Téléphone
+telephoneInput.addEventListener("input", () => {
+    if (!phoneRegex.test(telephoneInput.value)) {
+        telephoneError.textContent = "Numéro invalide (Format marocain requis).";
+        telephoneInput.style.borderColor = "red";
+    } else {
+        telephoneError.textContent = "";
+        telephoneInput.style.borderColor = "green";
+    }
+});
+
+// fonction dial restrictions
+function restrictions(){
+    
 }

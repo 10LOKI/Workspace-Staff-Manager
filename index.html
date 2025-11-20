@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Workspace Staff Manager</title>
-    <link rel="icon" href="images/logo1.png" type="image/png">
 </head>
 
 <body>
@@ -32,6 +31,7 @@
                 <div class="form-group">
                     <label>Nom:</label>
                     <input id="nomInput" type="text" placeholder="Entre nom">
+                    <span class="error" id="nomError"></span>
                 </div>
 
                 <div class="form-group">
@@ -40,6 +40,11 @@
                         <option>Receptioniste</option>
                         <option>agent de securite</option>
                         <option>directeur</option>
+                        <option>Femme de manage</option>
+                        <option>sucretaire</option>
+                        <option>Technicien</option>
+                        <option>responsable RH</option>
+                        <option>Manager</option>
                     </select>
                 </div>
 
@@ -77,11 +82,13 @@
                 <div class="form-group">
                     <label>Email:</label>
                     <input type="email"  id="emailInput" placeholder="email@example.com">
+                    <span class="error" id="emailError"></span>
                 </div>
 
                 <div class="form-group">
                     <label>Telephone:</label>
                     <input id="telephoneInput" type="text" placeholder="+212 655112255">
+                    <span class="error" id="telephoneError"></span>
                 </div>
             </div>
 
