@@ -83,7 +83,6 @@ h2, h3, p {
 #addEmployee:hover {
     background-color: #6a28e0;
 }
-/* l'affichage des cartes */
 .staffList .list {
     margin-top: 20px;
 }
@@ -120,7 +119,7 @@ h2, h3, p {
 .delete_btn:hover {
     background-color: #e74c3c;
     color: white;
-    transform: scale(1.1); /* L'icône grandit un peu */
+    transform: scale(1.1);
 }
 .user_img {
     width: 80px;
@@ -165,19 +164,18 @@ h2, h3, p {
     justify-content: center;
     align-items: center;
     color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Ombre sur le texte */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
-/* Optionnel : Ajouter un filtre sombre pour mieux voir le texte */
+
 .etageScheme > div::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* Calque noir transparent */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
 
-/* Pour que le contenu (texte/select) soit au-dessus du filtre sombre */
 .etageScheme > div p, 
 .etageScheme > div label, 
 .etageScheme > div select {
@@ -189,7 +187,6 @@ h2, h3, p {
     display: flex;
     flex-direction: column;
 }
-/* Supprime les anciens margin/width/height fixes ! */
 
 .salleConf {
     background-image: url('images/salleReunion.jpg');
@@ -340,7 +337,7 @@ button {
     background-color: var(--accent-color);
     color: white;
 }
-/* Container li fih les cartes */
+
 .occupied-list {
     display: flex;
     flex-wrap: wrap;
@@ -348,12 +345,11 @@ button {
     margin-top: 10px;
 }
 
-/* Design dyal la carte sghira */
 .mini-card {
     background: #fff;
     border-radius: 8px;
     padding: 10px;
-    width: 140px; /* 3ard sghir */
+    width: 140px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -392,9 +388,46 @@ button {
     color: white;
 }
 
-.btn-info { background-color: #2196F3; } /* Zre9 */
-.btn-remove { background-color: #f44336; } /* 7mer */
+.btn-info { background-color: #2196F3; }
+.btn-remove { background-color: #f44336; }
 
+.modalDesc {
+    display: none;
+    position: fixed;
+    z-index: 7;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content-desc {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    font-style: oblique;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.close-button-desc {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button-desc:hover,
+.close-button-desc:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 @media (max-width: 1023px) {
     .mainContainer {
