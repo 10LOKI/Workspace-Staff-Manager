@@ -254,13 +254,8 @@ function afficherSalle() {
                         <h4>${worker.nom}</h4>
                         
                         <div class="mini-card-btns">
-                            <button class="btn-info" onclick="voirDescription(${index})">
-                                Afficher infos
-                            </button>
-                            
-                            <button class="btn-remove" onclick="retirerDeSalle(${index})">
-                            Retourner a la liste 
-                            </button>
+                            <button class="btn-info" onclick="voirDescription(${index})">Afficher les infos</button>
+                            <button class="btn-remove" onclick="retirerDeSalle(${index})">Retourner a la liste </button>
                         </div>
                     </div>
                 `;
@@ -277,15 +272,22 @@ function retirerDeSalle(index) {
 
 function voirDescription(index)
 {
-    const w = workers[index];
+    const Emp = workers[index];
 
     let message = `
-    Nom: ${w.nom}
-    Rôle: ${w.role}
-    Email: ${w.email}
-    Tel: ${w.telephone}
-    Société précedente: ${w.experiences[0] ? w.experiences[0].societe : 'Aucune'}
+    Nom: ${Emp.nom}
+    Rôle: ${Emp.role}
+    Email: ${Emp.email}
+    Tel: ${Emp.telephone}
+    Société précedente: ${Emp.experiences[0] ? Emp.experiences[0].societe : 'Aucune'}
     `;
-    
-    alert(message);
+    let modalDesc = document.getElementById('workerModal');
+    let detailsContainer = document.getElementById('workerDetails');
+    let closeButton = document.getElementsByClassName('close-button-desc')[0];
+    detailsContainer.textContent = message;
+    modalDesc.style.display = "block";
+    closeButton.onclick = function() 
+    {
+        modalDesc.style.display = "none";
+    }
 }
