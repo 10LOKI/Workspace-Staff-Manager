@@ -99,28 +99,7 @@ h2, h3, p {
 .worker_card:hover {
     transform: translateY(-5px);
 }
-.delete_btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: white;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #e74c3c;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
 
-.delete_btn:hover {
-    background-color: #e74c3c;
-    color: white;
-    transform: scale(1.1);
-}
 .user_img {
     width: 80px;
     height: 80px;
@@ -428,7 +407,20 @@ button {
     text-decoration: none;
     cursor: pointer;
 }
+.supprimer-experience {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
 
+.supprimer-experience:hover {
+    background-color: #cc0000;
+}
 @media (max-width: 1023px) {
     .mainContainer {
         grid-template-columns: 1fr;

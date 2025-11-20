@@ -1,7 +1,7 @@
 let workers = [
     {
         nom : "Loki",
-        role : "manager",
+        role : "Manager",
         photo : "/images/alae_img.jpeg",
         email : "alaeloki18@gmail.com",
         telephone : "0694733827",
@@ -18,7 +18,7 @@ let workers = [
     {
         nom: "Youssef El Mansouri",
         role: "directeur",
-        photo: "https://randomuser.me/api/portraits/men/32.jpg",
+        photo: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSMT-1qIyD3C5-F_VP-jUdjDrIfDeSAfeGW6f-fkVByudoDO-l3tMUy9ub-HgoTOgcq8sGhvjnU993Aa4U",
         email: "youssef.mansouri@example.com",
         telephone: "+212 661 123 456",
         zone: null,
@@ -85,11 +85,11 @@ let workers = [
 
 const autorisations = {
     "Salle de conférence": ["Receptioniste", "agent de securite", "directeur", "Femme de manage", "sucretaire", "Technicien", "responsable RH", "Manager"],
-    "Reception": ["Receptioniste", "directeur", "Femme de manage", "sucretaire", "responsable RH", "Manager"],
-    "salle serveurs": ["Technicien", "directeur", "Femme de manage", "responsable RH", "Manager"],
-    "salle de securite": ["agent de securite", "directeur", "Femme de manage", "responsable RH", "Manager"],
+    "Reception": ["Receptioniste"],
+    "salle serveurs": ["Technicien"],
+    "salle de securite": ["agent de securite"],
     "salle d'archives": ["Manager"],
-    "salle du personnel": ["Receptioniste", "agent de securite", "directeur", "Femme de manage", "sucretaire", "Technicien", "responsable RH", "Manager"], 
+    "salle du personnel": ["Receptioniste", "agent de securite", "directeur", "Femme de manage", "sucretaire", "Technicien", "responsable RH", "Manager"]
 };
 // l'appel des fonctions 
 document.addEventListener("DOMContentLoaded", () =>
@@ -118,6 +118,71 @@ closeModal.addEventListener('click', () =>
 {
     modal.classList.add("hidden");
 })
+
+// Fonction pour ajouter de nouveaux champs d'expérience
+document.getElementById("experienceBtn").addEventListener("click", function() {
+    ajouterChampExperience();
+});
+
+function ajouterChampExperience() {
+    const experiencesContainer = document.querySelector('.experiences-container');
+    
+    const newExperience = document.createElement('div');
+    newExperience.className = 'experience-item';
+    newExperience.innerHTML = `
+        <div class="form-group">
+            <label>Societe:</label>
+            <input class="exp-societe" type="text" placeholder="Enter company">
+        </div>
+        <div class="form-group">
+            <label>Role:</label>
+            <input class="exp-role" type="text" placeholder="Enter role">
+        </div>
+        <div class="row-inputs">
+            <div class="form-group">
+                <label>Du:</label>
+                <input class="exp-du" type="date">
+            </div>
+            <div class="form-group">
+                <label>A:</label>
+                <input class="exp-a" type="date">
+            </div>
+        </div>
+        <button type="button" class="supprimer-experience">Supprimer cette expérience</button>
+    `;
+    
+    experiencesContainer.appendChild(newExperience);
+    
+    // Ajouter l'événement pour supprimer cette expérience
+    newExperience.querySelector('.supprimer-experience').addEventListener('click', function() {
+        experiencesContainer.removeChild(newExperience);
+    });
+}
+
+// Fonction pour récupérer toutes les expériences
+function recupererExperiences() {
+    let experienceArray = [];
+    let experienceItems = document.querySelectorAll('.experience-item');
+    
+    experienceItems.forEach(function(item) {
+        let societe = item.querySelector('.exp-societe').value;
+        let rolexp = item.querySelector('.exp-role').value;
+        let debut = item.querySelector('.exp-du').value;
+        let fin = item.querySelector('.exp-a').value;
+
+        if(societe !== '') {
+            experienceArray.push({
+                societe: societe,
+                role: rolexp,
+                date_debut: debut,
+                date_fin: fin
+            });
+        }
+    });
+    
+    return experienceArray;
+}
+
 // Ajouter des employee
 submitBtn.addEventListener('click', ajoutCarte);
 function ajoutCarte()
@@ -133,25 +198,8 @@ function ajoutCarte()
     let photo = document.getElementById("photoInput").value;
     let email = document.getElementById("emailInput").value;
     let telephone = document.getElementById("telephoneInput").value;
-    let experienceArray = [];
-    let experienceItems = document.querySelectorAll('.experience-item');
-    experienceItems.forEach(function(item)
-{
-    let societe = item.querySelector('.exp-societe').value;
-    let rolexp = item.querySelector('.exp-role').value;
-    let debut = item.querySelector('.exp-du').value;
-    let fin = item.querySelector('.exp-a').value;
+    let experienceArray = recupererExperiences();
 
-    if(societe !== '')
-    {
-        experienceArray.push({
-            societe: societe,
-            role: rolexp,
-            date_debut: debut,
-            date_fin: fin
-        })
-    }
-})
 if(nom === "" || role === "" || email === "" || telephone ==="")
 {
     alert("Veuillez saisir les cordonnés s'il vous plait");
@@ -173,6 +221,16 @@ let allInputs = document.querySelectorAll('.modal input');
 allInputs.forEach(input => {
     input.value = "";
 });
+const experiencesContainer = document.querySelector('.experiences-container');
+const firstExperience = experiencesContainer.querySelector('.experience-item');
+experiencesContainer.innerHTML = '';
+experiencesContainer.appendChild(firstExperience);
+
+// Réinitialiser les inputs du premier champ d'expérience
+firstExperience.querySelector('.exp-societe').value = '';
+firstExperience.querySelector('.exp-role').value = '';
+firstExperience.querySelector('.exp-du').value = '';
+firstExperience.querySelector('.exp-a').value = '';
 document.querySelector('.modal').classList.add("hidden");
 }
 
@@ -188,12 +246,6 @@ function afficherEmployee(){
         if(worker.zone ===null){
         workList.innerHTML += `
         <div class="worker_card">
-        <button class="delete_btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="3 6 5 6 21 6"></polyline>
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                </svg>
-            </button>
             <div class="card_header">
                 <img src="${worker.photo}" alt="${worker.nom}" class="user_img">
             </div>
@@ -211,6 +263,7 @@ function afficherEmployee(){
 function supprEmployee()
 {
 //khassni mazal nerje3 liha nekhdem 3la suppresion
+
 }
 function affichOptions()
 {
@@ -218,7 +271,7 @@ function affichOptions()
     allSelects.forEach(select => 
     {
         const roomName = select.getAttribute('data-room');
-        const authorizedWorkers = getAuthorizedWorkers(roomName); 
+        const authorizedWorkers = employeeAutorisee(roomName); 
         select.innerHTML = '<option value="">Selectionner</option>';
         authorizedWorkers.forEach((worker) => 
         {
@@ -351,24 +404,17 @@ telephoneInput.addEventListener("input", () => {
 });
 
 // fonction dial restrictions
-function getAuthorizedWorkers(roomName) {
-    // Utilise le nouvel objet d'autorisations pour obtenir les rôles permis pour la salle
+function employeeAutorisee(roomName) {
     const authorizedRoles = autorisations[roomName]; 
 
-    // Si la salle n'est pas répertoriée, aucun rôle n'est autorisé
     if (!authorizedRoles) {
         return [];
     }
-
     return workers.filter(worker => {
-        // 1. L'employé doit être dans la liste d'attente (zone === null)
         if (worker.zone !== null) {
             return false;
         }
-
         const role = worker.role;
-
-        // 2. Vérifier si le rôle de l'employé est dans le tableau des rôles autorisés pour cette salle
         return authorizedRoles.includes(role);
     });
 }
