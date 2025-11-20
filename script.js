@@ -39,7 +39,7 @@ let workers = [
     },
     {
         nom: "Salma Benali",
-        role: "Receptioniste",
+        role: "Femme de manage",
         photo: "https://randomuser.me/api/portraits/women/44.jpg",
         email: "salma.benali@example.com",
         telephone: "+212 663 987 654",
@@ -83,14 +83,14 @@ let workers = [
     }
 ];
 
-// let restrictions = {
-//     salleReunion = [],
-//     reception = [],
-//     salleServeurs = [],
-//     salleSecurite = [],
-//     sallePersonnel = [],
-//     salleArchive =[]
-// };
+const autorisations = {
+    "Salle de conférence": ["Receptioniste", "agent de securite", "directeur", "Femme de manage", "sucretaire", "Technicien", "responsable RH", "Manager"],
+    "Reception": ["Receptioniste", "directeur", "Femme de manage", "sucretaire", "responsable RH", "Manager"],
+    "salle serveurs": ["Technicien", "directeur", "Femme de manage", "responsable RH", "Manager"],
+    "salle de securite": ["agent de securite", "directeur", "Femme de manage", "responsable RH", "Manager"],
+    "salle d'archives": ["Manager"],
+    "salle du personnel": ["Receptioniste", "agent de securite", "directeur", "Femme de manage", "sucretaire", "Technicien", "responsable RH", "Manager"], 
+};
 // l'appel des fonctions 
 document.addEventListener("DOMContentLoaded", () =>
 {
@@ -212,28 +212,28 @@ function supprEmployee()
 {
 //khassni mazal nerje3 liha nekhdem 3la suppresion
 }
-
 function affichOptions()
 {
     const allSelects = document.querySelectorAll('.room-select');
     allSelects.forEach(select => 
     {
+        const roomName = select.getAttribute('data-room');
+        const authorizedWorkers = getAuthorizedWorkers(roomName); 
         select.innerHTML = '<option value="">Selectionner</option>';
-        workers.forEach((worker, index) => 
+        authorizedWorkers.forEach((worker) => 
         {
-            if(worker.zone === null)
-            {
-                let option = document.createElement('option');
-                option.value = index;
-                option.textContent = worker.nom;
-                select.appendChild(option);
-            }
+            const workerIndex = workers.indexOf(worker);
+            let option = document.createElement('option');
+            option.value = workerIndex; 
+            option.textContent = worker.nom;
+            select.appendChild(option);
         })
         select.onchange = function() {
             const selectedIndex = this.value;
-            const roomName = this.getAttribute('data-room');
-            deplacerEmployee(this.value, this.dataset.room);
-            this.value = "";
+            if(selectedIndex !== "") {
+               deplacerEmployee(selectedIndex, this.dataset.room);
+           }
+           this.value = "";
         };
     })
 }
@@ -351,6 +351,24 @@ telephoneInput.addEventListener("input", () => {
 });
 
 // fonction dial restrictions
-function restrictions(){
-    
+function getAuthorizedWorkers(roomName) {
+    // Utilise le nouvel objet d'autorisations pour obtenir les rôles permis pour la salle
+    const authorizedRoles = autorisations[roomName]; 
+
+    // Si la salle n'est pas répertoriée, aucun rôle n'est autorisé
+    if (!authorizedRoles) {
+        return [];
+    }
+
+    return workers.filter(worker => {
+        // 1. L'employé doit être dans la liste d'attente (zone === null)
+        if (worker.zone !== null) {
+            return false;
+        }
+
+        const role = worker.role;
+
+        // 2. Vérifier si le rôle de l'employé est dans le tableau des rôles autorisés pour cette salle
+        return authorizedRoles.includes(role);
+    });
 }
