@@ -471,3 +471,30 @@ button {
         flex-direction: column;
     }
 }
+.capacity-display {
+    margin: 5px 0;
+    font-weight: bold;
+    padding: 3px 8px;
+    background-color: white;
+    border-radius: 4px;
+    border-left: 3px solid white;
+    z-index: 8;
+}
+
+.capacity-display.full {
+    border-left-color: #dc3545;
+}
+
+.room-select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.mini-card {
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    background: white;
+}
