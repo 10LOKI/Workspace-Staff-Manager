@@ -86,7 +86,7 @@ let workers = [
 // l'objet des personnes qui ont l'acces a chaque salle
 const autorisations = {
     "Salle de conférence": ["Receptioniste", "agent de securite", "directeur", "Femme de manage", "sucretaire", "Technicien", "responsable RH", "Manager"],
-    "Reception": ["Receptioniste"],
+    "Reception": ["Receptioniste","Manager"],
     "salle serveurs": ["Technicien"],
     "salle de securite": ["agent de securite"],
     "salle d'archives": ["Manager"],
