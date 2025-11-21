@@ -92,14 +92,24 @@ const autorisations = {
     "salle d'archives": ["Manager"],
     "salle du personnel": ["Receptioniste", "agent de securite", "directeur", "Femme de manage", "sucretaire", "Technicien", "responsable RH", "Manager"]
 };
+// les capacités de chaque salle 
+let capacite = {
+    "Salle de conférence": 9,
+    "Reception": 2,
+    "salle serveurs": 3,
+    "salle de securite": 2,
+    "salle d'archives": 4,
+    "salle du personnel":10
+}
 // l'appel des fonctions 
 document.addEventListener("DOMContentLoaded", () => {
     afficherEmployee();
     affichOptions();
     afficherSalle();
+    afficherEtatCapacite();
 })
 
-// l'affichage des employees 
+// l'affichage des employees disponible dans la liste unasigned
 function afficherEmployee() {
     let workList = document.querySelector('.list');
     workList.innerHTML = '';
@@ -166,7 +176,7 @@ function affichOptions() {
         select.onchange = function () {
             const selectedIndex = this.value;
             if (selectedIndex !== "") {
-                deplacerEmployee(selectedIndex, this.dataset.room);
+                deplacerEmployee(selectedIndex, this.dataset.room); 
             }
             this.value = "";
         };
@@ -192,12 +202,19 @@ function employeeAutorisee(roomName) {
 
 function deplacerEmployee(index, roomName) {
     if (index === "") return;
+    const statutCapacite = verifierCapaciteSalle(roomName);
+    
+    if (!statutCapacite.peutAjouter) {
+        alert(`❌ Impossible d'ajouter ${workers[index].nom} à ${roomName} - Capacité maximale (${statutCapacite.capaciteMax}) atteinte !`);
+        return;
+    }
 
     workers[index].zone = roomName;
 
     afficherEmployee();
     affichOptions();
     afficherSalle();
+    afficherEtatCapacite();
     alert(workers[index].nom + " est deplacé dans " + roomName);
 }
 
@@ -207,6 +224,7 @@ function retirerDeSalle(index) {
     afficherEmployee();
     affichOptions();
     afficherSalle();
+    afficherEtatCapacite();
 }
 // la fonction qui affiche l modal dial description d'un employee
 function voirDescription(index) {
@@ -275,7 +293,6 @@ function ajouterChampExperience() {
         </div>
         <button type="button" class="supprimer-experience">Supprimer cette expérience</button>
     `;
-
     experiencesContainer.appendChild(newExperience);
 
     // Ajouter l'événement pour supprimer cette expérience
@@ -400,3 +417,48 @@ emailInput.addEventListener("input", () => {
 //     }
 // });
 
+// Fonction pour vérifier la capacité d'une salle
+function verifierCapaciteSalle(roomName) {
+    const occupationActuelle = workers.filter(worker => worker.zone === roomName).length;
+    const capaciteMax = capacite[roomName];
+    
+    return {
+        occupation: occupationActuelle,
+        capaciteMax: capaciteMax,
+        peutAjouter: occupationActuelle < capaciteMax,
+        placesRestantes: capaciteMax - occupationActuelle
+    };
+}
+
+// Fonction pour afficher l'état de capacité
+function afficherEtatCapacite() {
+    document.querySelectorAll('.etageScheme > div').forEach(roomDiv => {
+        const roomName = roomDiv.getAttribute('data-room');
+        const statut = verifierCapaciteSalle(roomName);
+        const selectElement = roomDiv.querySelector('.room-select');
+        
+        // Mettre à jour l'affichage de la capacité
+        let capacityDisplay = roomDiv.querySelector('.capacity-display');
+        if (!capacityDisplay) {
+            capacityDisplay = document.createElement('div');
+            capacityDisplay.className = 'capacity-display';
+            roomDiv.insertBefore(capacityDisplay, roomDiv.querySelector('.occupied-list'));
+        }
+        
+        capacityDisplay.innerHTML = `
+            <small style="color: ${statut.placesRestantes > 0 ? 'green' : 'red'};">
+                Capacité: ${statut.occupation}/${statut.capaciteMax}
+            </small>
+        `;
+        
+        // Désactiver le select si la salle est pleine
+        if (selectElement) {
+            selectElement.disabled = !statut.peutAjouter;
+            if (!statut.peutAjouter) {
+                selectElement.title = "Salle pleine - Capacité maximale atteinte";
+            } else {
+                selectElement.title = "";
+            }
+        }
+    });
+}
