@@ -168,27 +168,27 @@ h2, h3, p {
 }
 
 .salleConf {
-    background-image: url('images/salleReunion.jpg');
+    background-image: url('images/sallereunion.jpeg');
 }
 
 .recepPlace {
-    background-image: url('images/reception.jpg');
+    background-image: url('images/reception1.jpeg');
 }
 
 .salleServeurs {
-    background-image: url('images/serverSalle.jpg');
+    background-image: url('images/serverssalle.jpeg');
 }
 
 .salleSecurite {
-    background-image: url('images/securiteSalle.jpg');
+    background-image: url('images/salleSecurite.jpeg');
 }
 
 .sallePersonnel {
-    background-image: url('images/staffRoom.jpg');
+    background-image: url('images/personnel.jpeg');
 }
 
 .salleArchive {
-    background-image: url('images/archiveSalle.jpg');
+    background-image: url('images/sallearchive.jpeg');
 }
 .hidden
 {
