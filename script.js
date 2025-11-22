@@ -16,72 +16,72 @@ let workers = [
             }
         ]
     },
-    // {
-    //     nom: "Youssef El Mansouri",
-    //     role: "directeur",
-    //     photo: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSMT-1qIyD3C5-F_VP-jUdjDrIfDeSAfeGW6f-fkVByudoDO-l3tMUy9ub-HgoTOgcq8sGhvjnU993Aa4U",
-    //     email: "youssef.mansouri@example.com",
-    //     telephone: "+212 661 123 456",
-    //     zone: null,
-    //     experiences: [
-    //         {
-    //             societe: "Groupe OCP",
-    //             role: "Chef de Département",
-    //             date_debut: "2018-01-15",
-    //             date_fin: "2022-12-31"
-    //         },
-    //         {
-    //             societe: "Maroc Telecom",
-    //             role: "Manager Senior",
-    //             date_debut: "2014-03-01",
-    //             date_fin: "2017-12-30"
-    //         }
-    //     ]
-    // },
-    // {
-    //     nom: "Salma Benali",
-    //     role: "Femme de manage",
-    //     photo: "https://randomuser.me/api/portraits/women/44.jpg",
-    //     email: "salma.benali@example.com",
-    //     telephone: "+212 663 987 654",
-    //     zone: null,
-    //     experiences: [
-    //         {
-    //             societe: "Hôtel Royal Mansour",
-    //             role: "Hôtesse d'accueil",
-    //             date_debut: "2021-06-01",
-    //             date_fin: "2023-05-30"
-    //         },
-    //         {
-    //             societe: "Centre d'Appel",
-    //             role: "Téléconseillère",
-    //             date_debut: "2019-09-01",
-    //             date_fin: "2021-04-01"
-    //         }
-    //     ]
-    // },
-    // {
-    //     nom: "Karim Tazi",
-    //     role: "agent de securite",
-    //     photo: "https://randomuser.me/api/portraits/men/85.jpg",
-    //     email: "karim.tazi@example.com",
-    //     telephone: "+212 655 223 344",
-    //     zone: null,
-    //     experiences: [
-    //         {
-    //             societe: "Securitas Maghreb",
-    //             role: "Agent de surveillance",
-    //             date_debut: "2020-02-01",
-    //             date_fin: "2023-08-15"
-    //         },
-    //         {
-    //             societe: "Marjane Holding",
-    //             role: "Vigile",
-    //             date_debut: "2018-01-10",
-    //             date_fin: "2020-01-20"
-    //         }
-    //     ]
-    // }
+    {
+        nom: "Youssef El Mansouri",
+        role: "directeur",
+        photo: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSMT-1qIyD3C5-F_VP-jUdjDrIfDeSAfeGW6f-fkVByudoDO-l3tMUy9ub-HgoTOgcq8sGhvjnU993Aa4U",
+        email: "youssef.mansouri@example.com",
+        telephone: "+212 661 123 456",
+        zone: null,
+        experiences: [
+            {
+                societe: "Groupe OCP",
+                role: "Chef de Département",
+                date_debut: "2018-01-15",
+                date_fin: "2022-12-31"
+            },
+            {
+                societe: "Maroc Telecom",
+                role: "Manager Senior",
+                date_debut: "2014-03-01",
+                date_fin: "2017-12-30"
+            }
+        ]
+    },
+    {
+        nom: "Salma Benali",
+        role: "Femme de manage",
+        photo: "https://randomuser.me/api/portraits/women/44.jpg",
+        email: "salma.benali@example.com",
+        telephone: "+212 663 987 654",
+        zone: null,
+        experiences: [
+            {
+                societe: "Hôtel Royal Mansour",
+                role: "Hôtesse d'accueil",
+                date_debut: "2021-06-01",
+                date_fin: "2023-05-30"
+            },
+            {
+                societe: "Centre d'Appel",
+                role: "Téléconseillère",
+                date_debut: "2019-09-01",
+                date_fin: "2021-04-01"
+            }
+        ]
+    },
+    {
+        nom: "Karim Tazi",
+        role: "agent de securite",
+        photo: "https://randomuser.me/api/portraits/men/85.jpg",
+        email: "karim.tazi@example.com",
+        telephone: "+212 655 223 344",
+        zone: null,
+        experiences: [
+            {
+                societe: "Securitas Maghreb",
+                role: "Agent de surveillance",
+                date_debut: "2020-02-01",
+                date_fin: "2023-08-15"
+            },
+            {
+                societe: "Marjane Holding",
+                role: "Vigile",
+                date_debut: "2018-01-10",
+                date_fin: "2020-01-20"
+            }
+        ]
+    }
 ];
 // l'objet des personnes qui ont l'acces a chaque salle
 const autorisations = {
@@ -344,6 +344,9 @@ function ajoutCarte() {
         alert("Veuillez saisir les cordonnés s'il vous plait");
         return;
     }
+    if (!validateDates(experienceArray)) {
+        return;
+    }
     let nouveauWorker = {
         nom: nom,
         role: role,
@@ -409,7 +412,7 @@ emailInput.addEventListener("input", () => {
 // Validation Téléphone
 // telephoneInput.addEventListener("input", () => {
 //     if (!phoneRegex.test(telephoneInput.value)) {
-//         telephoneError.textContent = "Numéro invalide (Format marocain requis).";
+//         telephoneError.textContent = "Numéro invalide";
 //         telephoneInput.style.borderColor = "red";
 //     } else {
 //         telephoneError.textContent = "";
@@ -417,6 +420,24 @@ emailInput.addEventListener("input", () => {
 //     }
 // });
 
+// fonction pour verifier la validation de la date
+function validateDates(experienceArray) {
+    for (let i = 0; i < experienceArray.length; i++) {
+        const exp = experienceArray[i];
+
+    // check order
+    if (exp.date_debut && exp.date_fin) {
+            const startDate = new Date(exp.date_debut);
+            const endDate = new Date(exp.date_fin);
+
+            if (startDate > endDate) {
+                alert(`Erreur dans l'expérience chez "${exp.societe}" : La date de début ne peut pas être après la date de fin.`);
+                return false; // Validation échouée
+            }
+        }
+    }
+    return true;
+}
 // Fonction pour vérifier la capacité d'une salle
 function verifierCapaciteSalle(roomName) {
     const occupationActuelle = workers.filter(worker => worker.zone === roomName).length;
