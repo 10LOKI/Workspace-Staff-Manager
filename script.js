@@ -16,72 +16,72 @@ let workers = [
             }
         ]
     },
-    {
-        nom: "Youssef El Mansouri",
-        role: "directeur",
-        photo: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSMT-1qIyD3C5-F_VP-jUdjDrIfDeSAfeGW6f-fkVByudoDO-l3tMUy9ub-HgoTOgcq8sGhvjnU993Aa4U",
-        email: "youssef.mansouri@example.com",
-        telephone: "+212 661 123 456",
-        zone: null,
-        experiences: [
-            {
-                societe: "Groupe OCP",
-                role: "Chef de Département",
-                date_debut: "2018-01-15",
-                date_fin: "2022-12-31"
-            },
-            {
-                societe: "Maroc Telecom",
-                role: "Manager Senior",
-                date_debut: "2014-03-01",
-                date_fin: "2017-12-30"
-            }
-        ]
-    },
-    {
-        nom: "Salma Benali",
-        role: "Femme de manage",
-        photo: "https://randomuser.me/api/portraits/women/44.jpg",
-        email: "salma.benali@example.com",
-        telephone: "+212 663 987 654",
-        zone: null,
-        experiences: [
-            {
-                societe: "Hôtel Royal Mansour",
-                role: "Hôtesse d'accueil",
-                date_debut: "2021-06-01",
-                date_fin: "2023-05-30"
-            },
-            {
-                societe: "Centre d'Appel",
-                role: "Téléconseillère",
-                date_debut: "2019-09-01",
-                date_fin: "2021-04-01"
-            }
-        ]
-    },
-    {
-        nom: "Karim Tazi",
-        role: "agent de securite",
-        photo: "https://randomuser.me/api/portraits/men/85.jpg",
-        email: "karim.tazi@example.com",
-        telephone: "+212 655 223 344",
-        zone: null,
-        experiences: [
-            {
-                societe: "Securitas Maghreb",
-                role: "Agent de surveillance",
-                date_debut: "2020-02-01",
-                date_fin: "2023-08-15"
-            },
-            {
-                societe: "Marjane Holding",
-                role: "Vigile",
-                date_debut: "2018-01-10",
-                date_fin: "2020-01-20"
-            }
-        ]
-    }
+    // {
+    //     nom: "Youssef El Mansouri",
+    //     role: "directeur",
+    //     photo: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSMT-1qIyD3C5-F_VP-jUdjDrIfDeSAfeGW6f-fkVByudoDO-l3tMUy9ub-HgoTOgcq8sGhvjnU993Aa4U",
+    //     email: "youssef.mansouri@example.com",
+    //     telephone: "+212 661 123 456",
+    //     zone: null,
+    //     experiences: [
+    //         {
+    //             societe: "Groupe OCP",
+    //             role: "Chef de Département",
+    //             date_debut: "2018-01-15",
+    //             date_fin: "2022-12-31"
+    //         },
+    //         {
+    //             societe: "Maroc Telecom",
+    //             role: "Manager Senior",
+    //             date_debut: "2014-03-01",
+    //             date_fin: "2017-12-30"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Salma Benali",
+    //     role: "Femme de manage",
+    //     photo: "https://randomuser.me/api/portraits/women/44.jpg",
+    //     email: "salma.benali@example.com",
+    //     telephone: "+212 663 987 654",
+    //     zone: null,
+    //     experiences: [
+    //         {
+    //             societe: "Hôtel Royal Mansour",
+    //             role: "Hôtesse d'accueil",
+    //             date_debut: "2021-06-01",
+    //             date_fin: "2023-05-30"
+    //         },
+    //         {
+    //             societe: "Centre d'Appel",
+    //             role: "Téléconseillère",
+    //             date_debut: "2019-09-01",
+    //             date_fin: "2021-04-01"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Karim Tazi",
+    //     role: "agent de securite",
+    //     photo: "https://randomuser.me/api/portraits/men/85.jpg",
+    //     email: "karim.tazi@example.com",
+    //     telephone: "+212 655 223 344",
+    //     zone: null,
+    //     experiences: [
+    //         {
+    //             societe: "Securitas Maghreb",
+    //             role: "Agent de surveillance",
+    //             date_debut: "2020-02-01",
+    //             date_fin: "2023-08-15"
+    //         },
+    //         {
+    //             societe: "Marjane Holding",
+    //             role: "Vigile",
+    //             date_debut: "2018-01-10",
+    //             date_fin: "2020-01-20"
+    //         }
+    //     ]
+    // }
 ];
 // l'objet des personnes qui ont l'acces a chaque salle
 const autorisations = {
