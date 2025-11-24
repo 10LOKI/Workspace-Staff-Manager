@@ -15,210 +15,210 @@ let workers = [
                 date_fin: "unknown"
             }
         ]
-    },
-    {
-        nom: "Youssef El Mansouri",
-        role: "directeur",
-        photo: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSMT-1qIyD3C5-F_VP-jUdjDrIfDeSAfeGW6f-fkVByudoDO-l3tMUy9ub-HgoTOgcq8sGhvjnU993Aa4U",
-        email: "youssef.mansouri@example.com",
-        telephone: "+212 661 123 456",
-        zone: null,
-        experiences: [
-            {
-                societe: "Groupe OCP",
-                role: "Chef de Département",
-                date_debut: "2018-01-15",
-                date_fin: "2022-12-31"
-            },
-            {
-                societe: "Maroc Telecom",
-                role: "Manager Senior",
-                date_debut: "2014-03-01",
-                date_fin: "2017-12-30"
-            }
-        ]
-    },
-    {
-        nom: "Salma Benali",
-        role: "Femme de manage",
-        photo: "https://randomuser.me/api/portraits/women/44.jpg",
-        email: "salma.benali@example.com",
-        telephone: "+212 663 987 654",
-        zone: null,
-        experiences: [
-            {
-                societe: "Hôtel Royal Mansour",
-                role: "Hôtesse d'accueil",
-                date_debut: "2021-06-01",
-                date_fin: "2023-05-30"
-            },
-            {
-                societe: "Centre d'Appel",
-                role: "Téléconseillère",
-                date_debut: "2019-09-01",
-                date_fin: "2021-04-01"
-            }
-        ]
-    },
-    {
-        nom: "Karim Tazi",
-        role: "directeur",
-        photo: "https://randomuser.me/api/portraits/men/85.jpg",
-        email: "karim.tazi@example.com",
-        telephone: "+212 655 223 344",
-        zone: null,
-        experiences: [
-            {
-                societe: "Securitas Maghreb",
-                role: "Agent de surveillance",
-                date_debut: "2020-02-01",
-                date_fin: "2023-08-15"
-            },
-            {
-                societe: "Marjane Holding",
-                role: "Vigile",
-                date_debut: "2018-01-10",
-                date_fin: "2020-01-20"
-            }
-        ]
-    },
-    {
-        nom: "Amine Idrissi",
-        role: "Technicien",
-        photo: "https://randomuser.me/api/portraits/men/32.jpg",
-        email: "amine.idrissi@tech.com",
-        telephone: "0661998877",
-        zone: null,
-        experiences: [
-            {
-                societe: "Dell Maroc",
-                role: "Technicien Réseau",
-                date_debut: "2019-05-01",
-                date_fin: "2021-08-01"
-            }
-        ]
-    },
-    {
-        nom: "Houda Benjelloun",
-        role: "responsable RH",
-        photo: "https://randomuser.me/api/portraits/women/65.jpg",
-        email: "houda.rh@example.com",
-        telephone: "0612345678",
-        zone: "Salle de conférence",
-        experiences: [
-            {
-                societe: "Manpower",
-                role: "Chargée de recrutement",
-                date_debut: "2015-02-01",
-                date_fin: "2020-01-01"
-            }
-        ]
-    },
-    {
-        nom: "Nadia Chraibi",
-        role: "Receptioniste",
-        photo: "https://randomuser.me/api/portraits/women/22.jpg",
-        email: "nadia.accueil@example.com",
-        telephone: "0655443322",
-        zone: "Reception", // Déjà à son poste
-        experiences: [
-            {
-                societe: "Sofitel",
-                role: "Hôtesse",
-                date_debut: "2018-06-01",
-                date_fin: "2022-01-01"
-            }
-        ]
-    },
-    {
-        nom: "Fatima Zahra",
-        role: "sucretaire",
-        photo: "https://randomuser.me/api/portraits/women/11.jpg",
-        email: "fatima.admin@example.com",
-        telephone: "0677889900",
-        zone: null,
-        experiences: [
-            {
-                societe: "Cabinet Notarial",
-                role: "Assistante",
-                date_debut: "2020-01-01",
-                date_fin: "2023-01-01"
-            }
-        ]
-    },
-    {
-        nom: "Driss El Alami",
-        role: "agent de securite",
-        photo: "https://randomuser.me/api/portraits/men/15.jpg",
-        email: "driss.secu@example.com",
-        telephone: "0699001122",
-        zone: "salle de securite", // Déjà en poste
-        experiences: [
-            {
-                societe: "G4S",
-                role: "Agent cynophile",
-                date_debut: "2017-03-15",
-                date_fin: "2021-11-30"
-            }
-        ]
-    },
-    {
-        nom: "Samir Berrada",
-        role: "Manager",
-        photo: "https://randomuser.me/api/portraits/men/55.jpg",
-        email: "samir.mng@example.com",
-        telephone: "0661112233",
-        zone: "salle d'archives", // Occupé aux archives
-        experiences: [
-            {
-                societe: "Banque Populaire",
-                role: "Chef d'agence",
-                date_debut: "2010-09-01",
-                date_fin: "2019-05-01"
-            }
-        ]
-    },
-    {
-        nom: "Aicha Kabbaj",
-        role: "Femme de manage",
-        photo: "https://randomuser.me/api/portraits/women/90.jpg",
-        email: "aicha.clean@example.com",
-        telephone: "0622334455",
-        zone: "salle du personnel", // En pause
-        experiences: [] // Pas d'expérience listée (Cas limite)
-    },
-    {
-        nom: "Mehdi Bennani",
-        role: "directeur",
-        photo: "https://randomuser.me/api/portraits/men/76.jpg",
-        email: "mehdi.ceo@example.com",
-        telephone: "0600000001",
-        zone: null, // Disponible
-        experiences: [
-            {
-                societe: "Multinationale X",
-                role: "CEO",
-                date_debut: "2015-01-01",
-                date_fin: "2023-12-31"
-            }
-        ]
-    },
-    {
-        nom: "Yassine Tazi",
-        role: "Technicien",
-        photo: "https://randomuser.me/api/portraits/men/42.jpg",
-        email: "yassine.it@example.com",
-        telephone: "0633445566",
-        zone: "salle serveurs",
-        experiences: [
-            {
-                societe: "Orange",
-                role: "Admin Sys",
-                date_debut: "2021-01-01",
-                date_fin: "En cours"
-            }
-        ]
     }
+    // {
+    //     nom: "Youssef El Mansouri",
+    //     role: "directeur",
+    //     photo: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSMT-1qIyD3C5-F_VP-jUdjDrIfDeSAfeGW6f-fkVByudoDO-l3tMUy9ub-HgoTOgcq8sGhvjnU993Aa4U",
+    //     email: "youssef.mansouri@example.com",
+    //     telephone: "+212 661 123 456",
+    //     zone: null,
+    //     experiences: [
+    //         {
+    //             societe: "Groupe OCP",
+    //             role: "Chef de Département",
+    //             date_debut: "2018-01-15",
+    //             date_fin: "2022-12-31"
+    //         },
+    //         {
+    //             societe: "Maroc Telecom",
+    //             role: "Manager Senior",
+    //             date_debut: "2014-03-01",
+    //             date_fin: "2017-12-30"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Salma Benali",
+    //     role: "Femme de manage",
+    //     photo: "https://randomuser.me/api/portraits/women/44.jpg",
+    //     email: "salma.benali@example.com",
+    //     telephone: "+212 663 987 654",
+    //     zone: null,
+    //     experiences: [
+    //         {
+    //             societe: "Hôtel Royal Mansour",
+    //             role: "Hôtesse d'accueil",
+    //             date_debut: "2021-06-01",
+    //             date_fin: "2023-05-30"
+    //         },
+    //         {
+    //             societe: "Centre d'Appel",
+    //             role: "Téléconseillère",
+    //             date_debut: "2019-09-01",
+    //             date_fin: "2021-04-01"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Karim Tazi",
+    //     role: "directeur",
+    //     photo: "https://randomuser.me/api/portraits/men/85.jpg",
+    //     email: "karim.tazi@example.com",
+    //     telephone: "+212 655 223 344",
+    //     zone: null,
+    //     experiences: [
+    //         {
+    //             societe: "Securitas Maghreb",
+    //             role: "Agent de surveillance",
+    //             date_debut: "2020-02-01",
+    //             date_fin: "2023-08-15"
+    //         },
+    //         {
+    //             societe: "Marjane Holding",
+    //             role: "Vigile",
+    //             date_debut: "2018-01-10",
+    //             date_fin: "2020-01-20"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Amine Idrissi",
+    //     role: "Technicien",
+    //     photo: "https://randomuser.me/api/portraits/men/32.jpg",
+    //     email: "amine.idrissi@tech.com",
+    //     telephone: "0661998877",
+    //     zone: null,
+    //     experiences: [
+    //         {
+    //             societe: "Dell Maroc",
+    //             role: "Technicien Réseau",
+    //             date_debut: "2019-05-01",
+    //             date_fin: "2021-08-01"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Houda Benjelloun",
+    //     role: "responsable RH",
+    //     photo: "https://randomuser.me/api/portraits/women/65.jpg",
+    //     email: "houda.rh@example.com",
+    //     telephone: "0612345678",
+    //     zone: "Salle de conférence",
+    //     experiences: [
+    //         {
+    //             societe: "Manpower",
+    //             role: "Chargée de recrutement",
+    //             date_debut: "2015-02-01",
+    //             date_fin: "2020-01-01"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Nadia Chraibi",
+    //     role: "Receptioniste",
+    //     photo: "https://randomuser.me/api/portraits/women/22.jpg",
+    //     email: "nadia.accueil@example.com",
+    //     telephone: "0655443322",
+    //     zone: "Reception", // Déjà à son poste
+    //     experiences: [
+    //         {
+    //             societe: "Sofitel",
+    //             role: "Hôtesse",
+    //             date_debut: "2018-06-01",
+    //             date_fin: "2022-01-01"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Fatima Zahra",
+    //     role: "sucretaire",
+    //     photo: "https://randomuser.me/api/portraits/women/11.jpg",
+    //     email: "fatima.admin@example.com",
+    //     telephone: "0677889900",
+    //     zone: null,
+    //     experiences: [
+    //         {
+    //             societe: "Cabinet Notarial",
+    //             role: "Assistante",
+    //             date_debut: "2020-01-01",
+    //             date_fin: "2023-01-01"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Driss El Alami",
+    //     role: "agent de securite",
+    //     photo: "https://randomuser.me/api/portraits/men/15.jpg",
+    //     email: "driss.secu@example.com",
+    //     telephone: "0699001122",
+    //     zone: "salle de securite", // Déjà en poste
+    //     experiences: [
+    //         {
+    //             societe: "G4S",
+    //             role: "Agent cynophile",
+    //             date_debut: "2017-03-15",
+    //             date_fin: "2021-11-30"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Samir Berrada",
+    //     role: "Manager",
+    //     photo: "https://randomuser.me/api/portraits/men/55.jpg",
+    //     email: "samir.mng@example.com",
+    //     telephone: "0661112233",
+    //     zone: "salle d'archives", // Occupé aux archives
+    //     experiences: [
+    //         {
+    //             societe: "Banque Populaire",
+    //             role: "Chef d'agence",
+    //             date_debut: "2010-09-01",
+    //             date_fin: "2019-05-01"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Aicha Kabbaj",
+    //     role: "Femme de manage",
+    //     photo: "https://randomuser.me/api/portraits/women/90.jpg",
+    //     email: "aicha.clean@example.com",
+    //     telephone: "0622334455",
+    //     zone: "salle du personnel", // En pause
+    //     experiences: [] // Pas d'expérience listée (Cas limite)
+    // },
+    // {
+    //     nom: "Mehdi Bennani",
+    //     role: "directeur",
+    //     photo: "https://randomuser.me/api/portraits/men/76.jpg",
+    //     email: "mehdi.ceo@example.com",
+    //     telephone: "0600000001",
+    //     zone: null, // Disponible
+    //     experiences: [
+    //         {
+    //             societe: "Multinationale X",
+    //             role: "CEO",
+    //             date_debut: "2015-01-01",
+    //             date_fin: "2023-12-31"
+    //         }
+    //     ]
+    // },
+    // {
+    //     nom: "Yassine Tazi",
+    //     role: "Technicien",
+    //     photo: "https://randomuser.me/api/portraits/men/42.jpg",
+    //     email: "yassine.it@example.com",
+    //     telephone: "0633445566",
+    //     zone: "salle serveurs",
+    //     experiences: [
+    //         {
+    //             societe: "Orange",
+    //             role: "Admin Sys",
+    //             date_debut: "2021-01-01",
+    //             date_fin: "En cours"
+    //         }
+    //     ]
+    // }
 ];
 // l'objet des personnes qui ont l'acces a chaque salle
 const autorisations = {
